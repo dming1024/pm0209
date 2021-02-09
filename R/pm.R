@@ -67,7 +67,7 @@ ProjectManage<-function(){
                                 shiny::fluidRow(
                                   shinyjs::useShinyjs(),
                                   shinyjs::inlineCSS(appCSS),
-                                  shiny::column(DT::dataTableOutput("dataout"),width = 12,offset=0.5),
+                                  shiny::column(shiny::dataTableOutput("dataout"),width = 12,offset=0.5),
                                   shiny::column(shiny::actionButton("add_button", "Add", shiny::icon("plus")),
                                                 shiny::actionButton("edit_button", "Edit",shiny::icon("edit")),
                                                 #actionButton("copy_button", "Copy", icon("copy")),
@@ -440,7 +440,7 @@ ProjectManage<-function(){
     })
 
 
-    output$dataout <- DT::renderDataTable({
+    output$dataout <- shiny::renderDataTable({
       #https://www.displayr.com/how-to-create-customized-tables-in-displayr-using-r/
       table <- responses_df() %>% select(-row_id)
       #names(table) <- c("ProjectID", "Description", "SourceFrom", "Participant", "Status","dateStart","dateEnd")
