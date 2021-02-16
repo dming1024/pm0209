@@ -1,10 +1,12 @@
 
 #' ProjectManage
 #'
-#' Add new users into the database
-#' in this web server,including add,delete and edit the Project.
-#' Any rows with duplicated row names will be dropped with the first one being
-#' kepted.
+#' A simple Project manage web server, designed for project manage.
+#' In this web server,you can add,delete and edit the Project.
+#' Yixuetongji Group developed this shiny App for his fans.
+#' If you have any questions, pls feel free to contact me(dongliulou@126.com).
+#' Furthermore, you can follow this guy by wechat:yixuetongji001.
+#'
 #' @author Dming1024
 #' @import dplyr DBI DT RSQLite pool shiny shinydashboard shinyjs uuid
 #' @importFrom dplyr select filter
@@ -286,7 +288,7 @@ ProjectManage<-function(){
       })
 
 
-      SQL_df <- RSQLite::dbReadTable(pool, "responses_df")
+      SQL_df <- RSQLite::dbReadTable(pool, "responses_df")%>% arrange(by_group=Status) %>% arrange(desc(Status))
 
       shiny::showModal(
         if(length(input$dataout_rows_selected) > 1 ){
@@ -321,7 +323,7 @@ ProjectManage<-function(){
     #使用view_button，对记录的信息进行view
     shiny::observeEvent(input$view_button,priority = 20,{
 
-      SQL_df <- RSQLite::dbReadTable(pool, "responses_df")
+      SQL_df <- RSQLite::dbReadTable(pool, "responses_df")%>% arrange(by_group=Status) %>% arrange(desc(Status))
 
       shiny::showModal(
         if(length(input$dataout_rows_selected) > 1 ){
@@ -425,7 +427,7 @@ ProjectManage<-function(){
     #更新后台数据库
     shiny::observeEvent(input$submit_edit, priority = 20, {
 
-      SQL_df <- RSQLite::dbReadTable(pool, "responses_df")
+      SQL_df <- RSQLite::dbReadTable(pool, "responses_df")%>% arrange(by_group=Status) %>% arrange(desc(Status))
       row_selection <- SQL_df[input$dataout_row_last_clicked, "row_id"]
       RSQLite::dbExecute(pool, sprintf('UPDATE "responses_df" SET "ProjectID" = ?, "Description" = ?, "SourceFrom" = ?,
                                        "Participant" = ?, "Status" = ?, "dateEnd" = ? WHERE "row_id" = ("%s")', row_selection),
