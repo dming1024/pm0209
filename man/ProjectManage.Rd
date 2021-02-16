@@ -7,11 +7,12 @@
 ProjectManage()
 }
 \description{
-Add new users into the database
-in this web server,including add,delete and edit the Project.
-Any rows with duplicated row names will be dropped with the first one being
-kepted.
+A simple Project manage web server, designed for project manage.
+In this web server,you can add,delete and edit the Project.
+Yixuetongji Group developed this shiny App for his fans.
+If you have any questions, pls feel free to contact me(dongliulou@126.com).
+Furthermore, you can follow this guy by wechat:yixuetongji001.
 }
 \author{
-FanQiangqiang
+Dming1024
 }
