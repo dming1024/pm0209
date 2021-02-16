@@ -1,16 +1,19 @@
 Package: pm
-Title: What the Package Does (One Line, Title Case)
+Title: A simple Project Manage App (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "dming",
+           family = "1024",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "dongliulou@126.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: A simple project manage app based on Rshiny, designed for project manage..
 License: GPL
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Imports: dplyr,DBI,DT,RSQLite,pool,shiny,shinydashboard,shinyjs,uuid
+Suggests: 
+    knitr
+VignetteBuilder: knitr
